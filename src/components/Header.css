@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Bebas+Neue&family=Georama:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=Fira+Code:wght@400;500;600&display=swap');
+
+.pixel-header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
+  margin: 0;
+  color: var(--text-color);
+  transition: color var(--theme-transition);
+  
+  /* Keep the hero text rigid */
+  display: flex;
+  align-items: baseline; 
+  justify-content: center;
+  height: 1.5em; 
+  line-height: 1;
+  /* Adjustable width for the 'Jake' text */
+  --jake-slot-width: 3.00ch;
+}
+
+.hero-prefix {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* Special formatting for the 'Jake' text */
+.highlight-slot {
+  display: inline-block;
+  width: var(--jake-slot-width);
+  height: 1em;
+  text-align: center;
+  vertical-align: baseline;
+  overflow: visible;
+}
+
+.hero-text .highlight {
+  color: var(--dot-color);
+  display: inline-block;
+  white-space: nowrap;
+  height: 1em;
+  line-height: 1;
+  padding: 0;
+  margin-left: var(--jake-offset);
+  font-weight: 400;
+  font-style: normal;
+  overflow: visible;
+  transition: font-family 0.05s ease;
+}
+
+/* No text select on the hero text */
+.hero-text,
+.hero-text * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The fonts for the rapid swap */
+.font-bbh-bartle { font-family: 'BBH Bartle', 'Bebas Neue', sans-serif; }
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-bebas { font-family: 'Bebas Neue', sans-serif; }
+.font-geom { font-family: 'Georama', sans-serif; }
+.font-dm-serif { font-family: 'DM Serif Display', serif; }
+.font-fira-code { font-family: 'Fira Code', monospace; }
+
+.explore-container {
+  position: absolute;
+  bottom: 80px;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.arrow-down {
+  width: 20px; height: 20px;
+  border-right: 2px solid var(--text-color);
+  border-bottom: 2px solid var(--text-color);
+  transform: rotate(45deg);
+  transition: border-color var(--theme-transition);
+}
