@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Header.css';
 
 const Header = ({ setIsHovered }) => {
@@ -22,8 +22,36 @@ const Header = ({ setIsHovered }) => {
     return () => clearInterval(timer);
   }, [fonts.length]);
 
+  // For dark mode only, randomly generate a pattern of stars
+  const stars = useMemo(() => {
+    const count = 28;
+    const arr = [];
+    for (let i = 0; i < count; i++) {
+      const left = Math.random() * 100;
+      const top = Math.random() * 100;
+      const size = 6 + Math.random() * 8;
+      arr.push({ left, top, size });
+    }
+    return arr;
+  }, []);
+
   return (
     <header className="pixel-header">
+      {/* Night sky stars layer (shows in dark theme) */}
+      <div className="stars-layer" aria-hidden="true">
+        {stars.map((s, idx) => (
+          <svg
+            key={idx}
+            className="star"
+            viewBox="0 0 24 24"
+            width={s.size}
+            height={s.size}
+            style={{ left: `${s.left}%`, top: `${s.top}%` }}
+          >
+            <path d="M12 2c.6 2.5 3.5 5.4 6 6-2.5.6-5.4 3.5-6 6-.6-2.5-3.5-5.4-6-6 2.5-.6 5.4-3.5 6-6Z" fill="currentColor" />
+          </svg>
+        ))}
+      </div>
       <h1 className="hero-text">
         <span className="hero-prefix">Hey there, I'm </span>
         <span className="highlight-slot">

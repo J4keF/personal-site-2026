@@ -7,6 +7,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
 }
 
 .hero-text {
@@ -25,12 +26,38 @@
   line-height: 1;
   /* Adjustable width for the 'Jake' text */
   --jake-slot-width: 3.00ch;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-prefix {
   display: inline-block;
   white-space: pre;
 }
+/* Stars layer that fades in on dark mode and toward the horizon */
+.stars-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity var(--theme-transition);
+  mask-image: linear-gradient(to bottom,
+    rgba(0,0,0,1) 0%,
+    rgba(0,0,0,0.5) 70%,
+    rgba(0,0,0,0) 100%
+  );
+}
+
+[data-theme='dark'] .stars-layer { opacity: 1; }
+
+.star {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+/* Keep star color constant; only fade opacity on theme change */
+[data-theme='dark'] .star { color: #ffffff; }
 
 /* Special formatting for the 'Jake' text */
 .highlight-slot {
@@ -78,6 +105,7 @@
   bottom: 80px;
   cursor: pointer;
   padding: 20px;
+  z-index: 1;
 }
 
 .arrow-down {
