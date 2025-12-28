@@ -1,0 +1,272 @@
+/* Projects section layout */
+.projects-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: clamp(24px, 6vw, 64px) 0;
+  box-sizing: border-box;
+  transition: background-color var(--theme-transition), color var(--theme-transition);
+  contain: layout style paint;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+:root {
+  --projects-card-width: 320px;
+  --projects-card-gap: 24px;
+  --projects-items-per-set: 8;
+  --projects-loop-distance: calc((var(--projects-card-width) + var(--projects-card-gap)) * var(--projects-items-per-set));
+}
+
+.projects-container {
+  width: 100%;
+  text-align: center;
+}
+
+.projects-title {
+  margin: 0 0 48px 0;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  color: var(--text-color);
+  text-align: center;
+  padding: 0 clamp(24px, 6vw, 64px);
+}
+
+/* Carousel styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  padding: 0;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--projects-loop-distance)));
+  }
+}
+
+/* Glassy project cards*/
+.project-card {
+  flex: 0 0 var(--projects-card-width);
+  width: var(--projects-card-width);
+  min-width: var(--projects-card-width);
+  max-width: var(--projects-card-width);
+  height: 240px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+  text-align: left;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-right: var(--projects-card-gap);
+  text-decoration: none;
+}
+
+.project-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
+  color: var(--accent-color);
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+.project-icon svg {
+  width: 40px;
+  height: 40px;
+  stroke: var(--accent-color);
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1);
+}
+
+
+[data-theme='light'] .project-card {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.12);
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='light'] .project-card:hover {
+  background: #efefef;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+  box-shadow: none;
+}
+
+[data-theme='dark'] .project-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+  border-left: 1px solid var(--accent-color);
+}
+
+.project-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  width: 100%;
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* Navigation dot */
+.nav-dot {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+  transition: transform 0.2s ease;
+  background-color: #ffffff;
+}
+
+.nav-dot:hover {
+  transform: scale(1.2);
+}
+
+.nav-dot .dot-expand {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.projects-section.transitioning .nav-dot .dot-expand {
+  animation: expandDot 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes expandDot {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(150);
+  }
+}
+
+/* Inverse colored dot for projects */
+.projects-section .nav-dot.inverse {
+  background-color: #ffffff !important;
+}
+
+.projects-section .nav-dot.inverse .dot-expand {
+  background-color: #ffffff;
+}
+
+.github-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 48px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+[data-theme='light'] .github-more-btn {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #1e1512;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .github-more-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+}
+
+[data-theme='light'] .github-more-btn:hover {
+  background: #efefef;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .github-more-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.github-more-btn:active {
+  transform: translateY(-2px);
+}
+
+.github-more-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.github-more-btn:active {
+  transform: translateY(-1px);
+}
+
+.github-more-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

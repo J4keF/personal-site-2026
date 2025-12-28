@@ -8,11 +8,11 @@
   justify-content: center;
   text-align: center;
   position: relative;
+  contain: layout style paint;
+  scroll-snap-align: start;
 }
 
 .hero-text {
-  font-family: 'Playfair Display', serif;
-  font-weight: 600;
   font-size: clamp(2.5rem, 8vw, 5.5rem);
   margin: 0;
   color: var(--text-color);
@@ -99,19 +99,3 @@
 .font-geom { font-family: 'Georama', sans-serif; }
 .font-dm-serif { font-family: 'DM Serif Display', serif; }
 .font-fira-code { font-family: 'Fira Code', monospace; }
-
-.explore-container {
-  position: absolute;
-  bottom: 80px;
-  cursor: pointer;
-  padding: 20px;
-  z-index: 1;
-}
-
-.arrow-down {
-  width: 20px; height: 20px;
-  border-right: 2px solid var(--text-color);
-  border-bottom: 2px solid var(--text-color);
-  transform: rotate(45deg);
-  transition: border-color var(--theme-transition);
-}

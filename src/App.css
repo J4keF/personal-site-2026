@@ -6,6 +6,17 @@
   --theme-transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html, body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
 [data-theme='light'] {
   --bg-color: #ffffff;
   --text-color: #1e1512; /* warm near-black brown */
@@ -22,7 +33,13 @@
   min-height: 100vh;
   width: 100%;
   transition: background-color var(--theme-transition), color var(--theme-transition);
-  overflow: hidden;
+  position: relative;
+}
+
+/* Universal h1 styling */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
 }
 
 /* Custom Cursor */
@@ -48,6 +65,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  will-change: transform, opacity, width, height;
+  contain: layout style paint;
 }
 
 .cursor-dot.flower .petal { 
@@ -78,6 +97,13 @@
   to   { transform: rotate(360deg); }
 }
 
+/* Hide cursor on mobile/touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
+
 .theme-toggle {
   position: fixed;
   top: 30px; right: 30px;
@@ -86,4 +112,27 @@
   cursor: pointer;
   color: var(--text-color);
   transition: color var(--theme-transition);
+}
+
+/* Logo button in top left corner */
+.logo-button {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 1001;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.nav-dot-button:hover .label {
+  color: var(--dot-color);
 }

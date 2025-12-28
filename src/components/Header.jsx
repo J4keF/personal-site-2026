@@ -58,15 +58,6 @@ const Header = ({ setIsHovered }) => {
           <span className={`highlight ${fonts[fontIndex]}`}>Jake</span>
         </span>
       </h1>
-      <div 
-        className="explore-container" 
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        // Clicking the explore button will eventuall jump to the about section
-        onClick={() => document.getElementById('about')?.scrollIntoView({behavior: 'smooth'})}
-      >
-        <div className="arrow-down"></div>
-      </div>
     </header>
   );
 };

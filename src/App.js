@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Header from './components/Header';
+import About from './components/About';
+import Projects from './components/Projects';
+import Resume from './components/Resume';
+import jLogo from './Assets/j.svg';
 import './App.css';
 
 function App() {
@@ -17,11 +21,9 @@ function App() {
     };
 
     const animate = () => {
-      // Variables for tuning the trailing dot effect
       const offset = 25;
-      const speed = 0.15;
+      const speed = 0.5;
 
-      // Dot trailing logic
       dot.current.x += (mouse.current.x + offset - dot.current.x) * speed;
       dot.current.y += (mouse.current.y + offset - dot.current.y) * speed;
 
@@ -31,7 +33,7 @@ function App() {
       requestAnimationFrame(animate);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     const frameId = requestAnimationFrame(animate);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
@@ -39,8 +41,21 @@ function App() {
     };
   }, []);
 
+
+
   return (
     <div className="App" data-theme={theme}>
+      {/* Logo button in top left - scroll to top */}
+      <button 
+        className="logo-button"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <img className="logo" src={jLogo} alt="J Logo" />
+      </button>
+
       {/* Cursor dot to work globally across website */}
       <div className={`cursor-dot ${isHovered ? 'flower' : ''}`} ref={dotRef}>
         <div className="spin-wrapper">
@@ -66,6 +81,10 @@ function App() {
       </button>
 
       <Header setIsHovered={setIsHovered} />
+
+      <About />
+      <Projects setIsHovered={setIsHovered} />
+      <Resume />
     </div>
   );
 }
