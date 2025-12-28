@@ -2,4 +2,4 @@
 
 Updated 12.2025
 
-Deployed at [jakefogel.com](url)
+Deployed at [https://jakefogel.com](url)
