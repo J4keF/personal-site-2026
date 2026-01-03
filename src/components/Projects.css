@@ -79,7 +79,7 @@
   gap: 6px;
   text-align: left;
   color: var(--text-color);
-  cursor: pointer;
+  cursor: pointer !important;
   transition: all 0.3s ease;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -160,53 +160,7 @@
   opacity: 0.8;
 }
 
-/* Navigation dot */
-.nav-dot {
-  position: fixed;
-  bottom: 60px;
-  right: 60px;
-  width: 20px;
-  height: 20px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  padding: 0;
-  transition: transform 0.2s ease;
-  background-color: #ffffff;
-}
 
-.nav-dot:hover {
-  transform: scale(1.2);
-}
-
-.nav-dot .dot-expand {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-}
-
-.projects-section.transitioning .nav-dot .dot-expand {
-  animation: expandDot 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes expandDot {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(150);
-  }
-}
-
-/* Inverse colored dot for projects */
-.projects-section .nav-dot.inverse {
-  background-color: #ffffff !important;
-}
-
-.projects-section .nav-dot.inverse .dot-expand {
-  background-color: #ffffff;
-}
 
 .github-more-btn {
   display: inline-flex;
@@ -223,7 +177,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   transition: all 0.3s ease;
-  cursor: pointer;
+  cursor: pointer !important;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 

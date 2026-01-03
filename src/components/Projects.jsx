@@ -53,7 +53,7 @@ const Projects = ({ setIsHovered }) => {
     };
   }, []);
 
-  // Real project data
+  // Project info
   const projects = [
     {
       id: 1,
@@ -133,6 +133,8 @@ const Projects = ({ setIsHovered }) => {
                 rel="noopener noreferrer"
                 className="project-card"
                 style={{ '--accent-color': project.accentColor }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 <div className="project-icon">{project.icon}</div>
                 <h3>{project.title}</h3>
@@ -148,6 +150,8 @@ const Projects = ({ setIsHovered }) => {
                 rel="noopener noreferrer"
                 className="project-card"
                 style={{ '--accent-color': project.accentColor }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               >
                 <div className="project-icon">{project.icon}</div>
                 <h3>{project.title}</h3>

@@ -10,12 +10,103 @@
   contain: layout style paint;
   position: relative;
   scroll-snap-align: start;
+  overflow: hidden;
 }
+
+.flower-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.flower-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: flower-spin 8s linear infinite;
+  animation-delay: calc(var(--delay, 0) * 0.2s);
+}
+
+/* Adjust the grid to look normal on mobile browsing */
+@media (max-width: 768px) {
+  .flower-grid {
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  /* Override inline grid positioning */
+  .flower-item {
+    grid-row: auto !important;
+    grid-column: auto !important;
+  }
+  
+  /* Hide the overflow */
+  .flower-item:nth-child(n+41) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .flower-grid {
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  /* Hide extra flowers for a 3 column layout */
+  .flower-item:nth-child(n+25) {
+    display: none;
+  }
+}
+
+.flower-item:nth-child(2n) { --delay: 1; }
+.flower-item:nth-child(3n) { --delay: 2; }
+.flower-item:nth-child(5n) { --delay: 3; }
+.flower-item:nth-child(7n) { --delay: 4; }
+
+@keyframes flower-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.flower-center {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-color, #ff6b6b);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.flower-petal {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-color, #ff6b6b);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.fp1 { transform: translateY(-6px); }
+.fp2 { transform: translateY(6px); }
+.fp3 { transform: translateX(-6px); }
+.fp4 { transform: translateX(6px); }
 
 .resume-content {
   max-width: 1100px;
   width: 100%;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .resume-title {
@@ -26,4 +117,63 @@
 
 .resume-content p {
   color: var(--text-color);
+}
+
+/* Resume buttons container */
+.resume-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Resume button styling (matches GitHub button) */
+.resume-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+[data-theme='light'] .resume-btn {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  color: #1e1512;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .resume-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f5f5f5;
+}
+
+[data-theme='light'] .resume-btn:hover {
+  background: #efefef;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+}
+
+[data-theme='dark'] .resume-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.resume-btn:active {
+  transform: translateY(-1px);
+}
+
+.resume-btn svg {
+  flex-shrink: 0;
 }

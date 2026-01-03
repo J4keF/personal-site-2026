@@ -10,10 +10,44 @@ function App() {
   // Initialize variables for the theme switching and the button hover effect
   const [theme, setTheme] = useState('light');
   const [isHovered, setIsHovered] = useState(false);
+  const [activeSection, setActiveSection] = useState(0);
   
   const dotRef = useRef(null);
   const mouse = useRef({ x: 0, y: 0 });
   const dot = useRef({ x: 0, y: 0 });
+
+  // Track current section and update the nav dots
+  useEffect(() => {
+    const sections = ['header', 'about', 'projects', 'resume'];
+    const options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id || 'header';
+          const index = sections.indexOf(sectionId);
+          if (index !== -1) setActiveSection(index);
+        }
+      });
+    }, options);
+
+    // Observe all sections
+    const headerSection = document.querySelector('.pixel-header');
+    const aboutSection = document.querySelector('#about');
+    const projectsSection = document.querySelector('#projects');
+    const resumeSection = document.querySelector('#resume');
+
+    if (headerSection) observer.observe(headerSection);
+    if (aboutSection) observer.observe(aboutSection);
+    if (projectsSection) observer.observe(projectsSection);
+    if (resumeSection) observer.observe(resumeSection);
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -56,6 +90,17 @@ function App() {
         <img className="logo" src={jLogo} alt="J Logo" />
       </button>
 
+      {/* Navigation dots centered at top */}
+      <div className="nav-dots-container" aria-label="Section navigation">
+        {[0, 1, 2, 3].map((index) => (
+          <div
+            key={index}
+            className={`nav-dot ${activeSection === index ? 'active' : ''}`}
+            aria-label={['Home', 'About', 'Projects', 'Resume'][index]}
+          />
+        ))}
+      </div>
+
       {/* Cursor dot to work globally across website */}
       <div className={`cursor-dot ${isHovered ? 'flower' : ''}`} ref={dotRef}>
         <div className="spin-wrapper">
@@ -84,7 +129,7 @@ function App() {
 
       <About />
       <Projects setIsHovered={setIsHovered} />
-      <Resume />
+      <Resume setIsHovered={setIsHovered} />
     </div>
   );
 }
