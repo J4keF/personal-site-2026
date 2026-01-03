@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.082999f8.css",
-    "main.js": "/static/js/main.866fee48.js",
+    "main.js": "/static/js/main.c0faf001.js",
     "static/js/453.855ab442.chunk.js": "/static/js/453.855ab442.chunk.js",
     "static/media/deer.jpeg": "/static/media/deer.e5d4aa8c5b22f0d8291e.jpeg",
     "static/media/jake-fogel-resume.pdf": "/static/media/jake-fogel-resume.c58e338677b7b8b4216b.pdf",
@@ -12,11 +12,11 @@
     "static/media/j.svg": "/static/media/j.1a892307d249d8a8e13d11275ffd8acf.svg",
     "static/media/smile.svg": "/static/media/smile.25a890e5cdc5ea37ecc752f871013123.svg",
     "main.082999f8.css.map": "/static/css/main.082999f8.css.map",
-    "main.866fee48.js.map": "/static/js/main.866fee48.js.map",
+    "main.c0faf001.js.map": "/static/js/main.c0faf001.js.map",
     "453.855ab442.chunk.js.map": "/static/js/453.855ab442.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.082999f8.css",
-    "static/js/main.866fee48.js"
+    "static/js/main.c0faf001.js"
   ]
 }
