@@ -51,7 +51,7 @@ const About = () => {
         <div className="about-text">
           <h1 className="about-title">About</h1>
           <p>
-            I'm a Computer Science student at McGill University with a professional background in generative AI and process automation. My academic record ranges from OS design and algorithms to Computational Biology and I lead a team coordinating the largest hackathon at McGill. I spent half a year studying in Tokyo, I love photography, and I get along royally with my moderately-well-behaved dog.
+            I'm a Computer Science student at McGill University with a professional background in generative AI and process automation. My academic record ranges from OS design and algorithms to computational biology and I lead a team coordinating the largest hackathon at McGill. I spent half a year studying in Tokyo, I love photography, and I get along royally with my moderately-well-behaved dog.
           </p>
         </div>
       </div>
