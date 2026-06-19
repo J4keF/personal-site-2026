@@ -4,6 +4,7 @@ import './Projects.css';
 import { ReactComponent as SmileIcon } from '../Assets/smile.svg';
 import { ReactComponent as DnaIcon } from '../Assets/dna.svg';
 import { ReactComponent as ScannerIcon } from '../Assets/scanner.svg';
+import { ReactComponent as OdysseyIcon } from '../Assets/odyssey-logo.svg';
 
 const Projects = ({ setIsHovered }) => {
   const trackRef = useRef(null);
@@ -57,7 +58,7 @@ const Projects = ({ setIsHovered }) => {
   const projects = [
     {
       id: 1,
-      title: "Emotion Classification with LLMs",
+      title: "NLP Emotion Classification",
       description: "Fine-tuned BERT-based models achieving >62% classification accuracy on GoEmotions dataset. Analyzed BERT attention heatmaps to interpret emotional word predictions.",
       link: "https://github.com/J4keF/GoEmotionsLLM",
       accentColor: "#ec4899",
@@ -102,9 +103,19 @@ const Projects = ({ setIsHovered }) => {
       title: "Custom Operating System",
       description: "Simulated OS shell with built-ins, FCFS/SJF/RR/aging schedulers, and demand-paged script execution using LRU replacement.",
       link: "https://github.com/J4keF/CustomOperatingSystem",
-      accentColor: "#f97316",
+      accentColor: "#10b981 ",
       icon: (
         <TerminalIcon width={40} height={40} />
+      )
+    },
+    {
+      id: 6,
+      title: "Odyssey - Goal Tracking",
+      description: "Flutter app with a nested Firebase backend breaking goals into Tasks, Milestones, SteppingStones, and Dailies. Built with Firebase Auth and Cloud Firestore for real-time progress tracking.",
+      link: "https://github.com/J4keF/Odyssey",
+      accentColor: "#f97316",
+      icon: (
+        <OdysseyIcon width={40} height={40} />
       )
     }
   ];
