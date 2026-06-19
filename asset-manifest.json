@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.082999f8.css",
-    "main.js": "/static/js/main.db19451d.js",
+    "main.css": "/static/css/main.295dc564.css",
+    "main.js": "/static/js/main.b85bf2df.js",
     "static/js/453.855ab442.chunk.js": "/static/js/453.855ab442.chunk.js",
     "static/media/deer.jpeg": "/static/media/deer.e5d4aa8c5b22f0d8291e.jpeg",
     "static/media/jake-fogel-resume.pdf": "/static/media/jake-fogel-resume.73403a159d9138ea8662.pdf",
+    "static/media/odyssey-logo.svg": "/static/media/odyssey-logo.bc2117fa498073cd564206a495133cfa.svg",
     "static/media/scanner.svg": "/static/media/scanner.c9e9e2fee65ac21108e5a3b7916167ce.svg",
     "static/media/terminal-svgrepo-com.svg": "/static/media/terminal-svgrepo-com.ca3422369898546507719fce4c44fab4.svg",
     "static/media/dna.svg": "/static/media/dna.6f392dec7b0a04fa168cf52685106770.svg",
     "index.html": "/index.html",
     "static/media/j.svg": "/static/media/j.1a892307d249d8a8e13d11275ffd8acf.svg",
     "static/media/smile.svg": "/static/media/smile.25a890e5cdc5ea37ecc752f871013123.svg",
-    "main.082999f8.css.map": "/static/css/main.082999f8.css.map",
-    "main.db19451d.js.map": "/static/js/main.db19451d.js.map",
+    "main.295dc564.css.map": "/static/css/main.295dc564.css.map",
+    "main.b85bf2df.js.map": "/static/js/main.b85bf2df.js.map",
     "453.855ab442.chunk.js.map": "/static/js/453.855ab442.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.082999f8.css",
-    "static/js/main.db19451d.js"
+    "static/css/main.295dc564.css",
+    "static/js/main.b85bf2df.js"
   ]
 }
